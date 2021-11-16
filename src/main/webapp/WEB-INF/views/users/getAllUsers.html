@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">   <!-- указываем, что это thymeleaf файл -->
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+</head>
+<body>
+
+<div th:each="user : ${users}">
+
+    <!-- при нажатии на "имя пользователя" выполнится переход на /users/{id}, где вместо {id} будет user.getId() -->
+    <a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a>
+
+</div>
+
+<br/>
+<hr/> <!-- создаем горизонтальную линию -->
+
+<a href="/users/new">Create new user</a>
+
+</body>
+</html>
