@@ -7,8 +7,9 @@
 </head>
 <body>
 
-<p th:text="${user.getId()}">VALUE</p>
-<p th:text="${user.getUsername()}">value</p>
+<p th:text="${user.getId()}"></p>
+<p th:text="${user.getUsername()}"></p>
+<p th:text="${user.getRoles()}"></p>
 
 <!-- кнопка с GET запросом на изменение User-->
 <a th:href="@{/admins/{id}/edit(id=${user.getId()})}">Edit</a>

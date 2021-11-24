@@ -47,9 +47,10 @@ public class AdminsController {
         return "redirect:/admins";
     }
 
-    // GET-запрос с id/edit откроет страницу editUser.html с пользователем по id для редактирования
+    // GET-запрос со страницы getUser передаст id и перейдет в этот метод по адресу /{id}/edit
+    // модель примет пользователя, найденного по id и откроет страницу editUser.html
     @GetMapping("/{id}/edit")
-    public String editUser(Model model, @PathVariable("id") int id) {
+    public String editUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("existingUser", userService.getUser(id));
         return "admin/editUser";
     }
@@ -62,7 +63,7 @@ public class AdminsController {
         return "redirect:/admins";
     }
 
-    // DELETE-запрос с id
+    // DELETE-запрос с id найдет пользователя, удалит его, и перейдет в admins/
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") int id) {
         userService.deleteUser(id);

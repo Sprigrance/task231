@@ -14,10 +14,14 @@
 
 </div>
 
-<br/>
+<hr/> <!-- создаем горизонтальную линию -->
+<a href="/admins/new">Create new user</a>
 <hr/> <!-- создаем горизонтальную линию -->
 
-<a href="/admins/new">Create new user</a>
+<br><br><br>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
 
 </body>
 </html>

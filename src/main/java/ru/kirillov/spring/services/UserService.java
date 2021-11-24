@@ -1,5 +1,6 @@
 package ru.kirillov.spring.services;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import ru.kirillov.spring.models.User;
 
 import java.util.List;

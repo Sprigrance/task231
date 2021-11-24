@@ -16,9 +16,10 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     /* Метод, указывающий на класс конфигурации Hibernate */
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{
-                DataBaseConfig.class
-        };
+        return null;
+//        return new Class<?>[]{
+//                DataBaseConfig.class
+//        };
     }
 
     /* Метод, указывающий на класс инициализации ViewResolver, для корректного отображения views */
@@ -55,6 +56,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
     }
 
+    /* Решение проблемы с кириллицей */
     @Override
     protected Filter[] getServletFilters() {
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();

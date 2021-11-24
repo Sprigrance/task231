@@ -42,4 +42,13 @@ public class UserDaoImpl implements UserDao {
     public void deleteUser(int id) {
         entityManager.remove(getUser(id));
     }
+
+
+
+    @Override
+    public User loadUserByUsername(String name) {
+        return entityManager.createQuery("from User where username = :username", User.class)
+                .setParameter("username", name)
+                .getSingleResult();
+    }
 }

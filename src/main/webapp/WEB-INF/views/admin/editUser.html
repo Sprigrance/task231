@@ -9,11 +9,16 @@
 
 <form th:method="PATCH" th:action="@{/admins/{id}(id=${existingUser.getId()})}" th:object="${existingUser}">
 
-    <label for="name">Enter name:</label>
+    <label for="name">Change name:</label>
     <input type="text" th:field="*{username}" id="name"/>
     <br/>
-    <label for="surname">Enter password:</label>
-    <input type="text" th:field="*{password}" id="surname"/>
+
+    <label for="password">Change password:</label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <br/>
+
+    <label for="roles">Change role(s):</label>
+    <input type="text" th:field="*{roles}" id="roles"/>
     <br/>
 
     <input type="submit" value="Update!"/>
