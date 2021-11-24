@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final LoginSuccessHandler loginUserHandler;  // класс, в котором описана логика перенаправления пользователей по ролям
 
     @Autowired
-    public SecurityConfig(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService, LoginSuccessHandler loginUserHandler) {
+    public SecurityConfig(UserDetailsService userDetailsService, LoginSuccessHandler loginUserHandler) {
         this.userDetailsService = userDetailsService;
         this.loginUserHandler = loginUserHandler;
     }
@@ -70,8 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //страница аутентификации доступна всем
                 .antMatchers("/login").anonymous()
                 // защищенные URL
-
-                .antMatchers("/user/**").access("hasAnyRole('ADMIN','USER')")
-                .antMatchers("/admin/**").access("hasRole('ADMIN')").anyRequest().authenticated();
+                .antMatchers("/user/**").access("hasAnyRole('ADMIN','USER')")                      // будет "доделка" в ROLE_ADMIN, ROLE_USER
+                .antMatchers("/admin/**").access("hasRole('ADMIN')").anyRequest().authenticated(); // будет "доделка" в ROLE_ADMIN
     }
 }

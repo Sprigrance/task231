@@ -19,7 +19,7 @@ public class User implements UserDetails {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;    // поле с именем "username" обязательно для реализации UserDetails!
 
     @Column(name = "password")

@@ -13,7 +13,7 @@ import ru.kirillov.spring.models.User;
 @RequestMapping("/users")
 public class UsersController {
 
-    private final UserDetailsService userDetailsService;  // Попробовать слить userDetailsService c UserServiceImpl
+    private final UserDetailsService userDetailsService;  // Попробовать слить userDetailsService c UserDetailsServiceImpl
 
     @Autowired
     public UsersController(UserDetailsService userDetailsService) {

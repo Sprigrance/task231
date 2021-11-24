@@ -1,11 +1,17 @@
 package ru.kirillov.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.kirillov.spring.models.Role;
 import ru.kirillov.spring.models.User;
 import ru.kirillov.spring.services.UserService;
+
+import javax.annotation.PostConstruct;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admins")
@@ -69,4 +75,26 @@ public class AdminsController {
         userService.deleteUser(id);
         return "redirect:/admins";
     }
+//
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
+//
+//    @PostConstruct
+//    public void myinit() {
+//        Role role1 = new Role("ROLE_ADMIN");
+//        Role role2 = new Role("ROLE_USER");
+//        Set<Role> roles = new HashSet<>();
+//        roles.add(role1);
+//        roles.add(role2);
+//
+//        roleService.saveRole(role1);
+//        roleService.saveRole(role2);
+//
+//        User user = new User();
+//        user.setUsername("admin");
+//        user.setPassword(passwordEncoder.encode("admin"));
+//        user.setRoles(roles);
+//
+//        userService.saveUser(user);
+//    }
 }
