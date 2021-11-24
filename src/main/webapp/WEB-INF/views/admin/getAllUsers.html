@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+</head>
+<body>
+
+<div th:each="user : ${users}">
+
+    <!-- при нажатии на "имя пользователя" выполнится переход на /admins/{id}, где вместо {id} будет user.getId() -->
+    <a th:href="@{/admins/{id}(id=${user.getId()})}" th:text="${user.getUsername()}">user</a>
+
+</div>
+
+<br/>
+<hr/> <!-- создаем горизонтальную линию -->
+
+<a href="/admins/new">Create new user</a>
+
+</body>
+</html>

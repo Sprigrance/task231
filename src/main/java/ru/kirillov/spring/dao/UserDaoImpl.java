@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
     @PersistenceContext                      // используем вместо @Autowired
     private EntityManager entityManager;
@@ -20,7 +20,9 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public User getUser(int id) {
-        return entityManager.find(User.class, id);
+        return entityManager.createQuery("from User where id = :userId", User.class)
+                .setParameter("userId", id)
+                .getSingleResult();
     }
 
     @Override
@@ -31,10 +33,9 @@ public class UserDaoImpl implements UserDao{
     @Override
     public void updateUser(int id, User updatedUser) {
         User userToBeUpdated = getUser(id);
-        userToBeUpdated.setId(updatedUser.getId());
-        userToBeUpdated.setName(updatedUser.getName());
-        userToBeUpdated.setSurname(updatedUser.getSurname());
-        userToBeUpdated.setSalary(updatedUser.getSalary());
+        userToBeUpdated.setUsername(updatedUser.getUsername());
+        userToBeUpdated.setPassword(updatedUser.getPassword());
+        entityManager.merge(userToBeUpdated);
     }
 
     @Override
