@@ -8,17 +8,16 @@
 <body>
 
 <div th:each="user : ${users}">
-
     <!-- при нажатии на "имя пользователя" выполнится переход на /admins/{id}, где вместо {id} будет user.getId() -->
-    <a th:href="@{/admins/{id}(id=${user.getId()})}" th:text="${user.getUsername()}">user</a>
-
+    <a th:href="@{/admins/{id}(id=${user.getId()})}" th:text="${user.getUsername()}"></a>
 </div>
 
-<hr/> <!-- создаем горизонтальную линию -->
-<a href="/admins/new">Create new user</a>
-<hr/> <!-- создаем горизонтальную линию -->
+<hr/>
 
-<br><br><br>
+<a href="/admins/new">Create new user</a>
+
+<hr/>
+
 <form th:action="@{/logout}" method="POST">
     <input type="submit" value="Logout"/>
 </form>

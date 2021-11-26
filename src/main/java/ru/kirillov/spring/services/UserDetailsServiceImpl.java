@@ -21,32 +21,32 @@ public class UserDetailsServiceImpl implements UserService, UserDetailsService {
         this.userDao = userDao;
     }
 
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
 
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
     public User getUser(int id) {
         return userDao.getUser(id);
     }
 
-    @Transactional
     @Override
+    @Transactional
     public void saveUser(User user) {
         userDao.saveUser(user);
     }
 
-    @Transactional
     @Override
+    @Transactional
     public void updateUser(int id, User user) {
         userDao.updateUser(id, user);
     }
 
-    @Transactional
     @Override
+    @Transactional
     public void deleteUser(int id) {
         userDao.deleteUser(id);
     }
@@ -54,8 +54,8 @@ public class UserDetailsServiceImpl implements UserService, UserDetailsService {
     // «Пользователь» – это просто Object. В большинстве случаев он может быть
     //  приведен к классу UserDetails.
     // Для создания UserDetails используется интерфейс UserDetailsService, с единственным методом:
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userDao.loadUserByUsername(username);
     }

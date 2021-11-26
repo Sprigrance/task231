@@ -8,12 +8,18 @@
 <body>
 
 <form th:method="POST" th:action="@{/admins}" th:object="${newUser}">
+
     <label for="name">Enter name:</label>
     <input type="text" th:field="*{username}" id="name"/>
     <br/>
-    <label for="surname">Enter password:</label>
-    <input type="text" th:field="*{password}" id="surname"/>
+
+    <label for="password">Enter password:</label>
+    <input type="text" th:field="*{password}" id="password"/>
     <br/>
+
+<!--    <label for="role">Enter password:</label>-->
+<!--    <input type="text" th:field="*{roles}" id="role"/>-->
+<!--    <br/>-->
 
     <input type="submit" value="Create!"/>
 </form>

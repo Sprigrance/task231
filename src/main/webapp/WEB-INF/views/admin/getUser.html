@@ -3,17 +3,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Пользователь</title>
+    <title>User info for admin</title>
 </head>
 <body>
 
 <p th:text="${user.getId()}"></p>
 <p th:text="${user.getUsername()}"></p>
-<p th:text="${user.getRoles()}"></p>
 
-<!-- кнопка с GET запросом на изменение User-->
+<h3>User's roles:</h3> <!-- заголовок 3го уровня -->
+<th:block th:each="role : ${user.getRoles()}">
+    <p th:text="${role.getName()}"></p>
+</th:block>
+
+<!-- GET-запрос на изменение User -->
 <a th:href="@{/admins/{id}/edit(id=${user.getId()})}">Edit</a>
+<br><br>
 
+<!-- DELETE-запрос на удаление User -->
 <form th:method="DELETE" th:action="@{/admins/{id}(id=${user.getId()})}">
     <input type="submit" value="Delete"/>
 </form>

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kirillov.spring.models.Role;
 import ru.kirillov.spring.models.User;
+import ru.kirillov.spring.services.RoleService;
 import ru.kirillov.spring.services.UserService;
 
 import javax.annotation.PostConstruct;
@@ -18,10 +19,12 @@ import java.util.Set;
 public class AdminsController {
 
     private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
-    public AdminsController(UserService userService) {
+    public AdminsController(UserService userService, RoleService roleService) {
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     // index-страница после редиректа
@@ -54,7 +57,7 @@ public class AdminsController {
     }
 
     // GET-запрос со страницы getUser передаст id и перейдет в этот метод по адресу /{id}/edit
-    // модель примет пользователя, найденного по id и откроет страницу editUser.html
+    // модель примет пользователя (+ его роли), найденного по id и откроет страницу editUser.html
     @GetMapping("/{id}/edit")
     public String editUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("existingUser", userService.getUser(id));
@@ -75,7 +78,8 @@ public class AdminsController {
         userService.deleteUser(id);
         return "redirect:/admins";
     }
-//
+
+//  Ручное добавление пользователей и ролей
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
 //
